@@ -9,7 +9,7 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/login/', 'login.html'));
 });
 
-app.listen(port);
+
 
 
 // MySQL connection
@@ -25,20 +25,14 @@ connection.connect((err) => {
   console.log('Connected to MySQL');
 });
 
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
-
-  connection.query(query, (err, result) => {
-    if (err) throw err;
-
-    if (result.length > 0) {
-      res.send('Login successful');
-    } else {
-      res.send('Invalid credentials');
-    }
+// routes
+app.get('/', (req, res) => {
+  var sql = 'SELECT * FROM certif'
+  connection.query(sql,  function(err, results) {
+    console.log(results)
   });
-});
+})
 
 
+
+app.listen(port)
