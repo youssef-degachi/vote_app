@@ -30,9 +30,13 @@ app.get('/', (req, res) => {
   var sql = 'SELECT * FROM certif'
   connection.query(sql,  function(err, results) {
     console.log(results)
+    res.send(results)
   });
 })
 
+// app.post('/',(req,res) => {
+//   var sql = "INSERT INTO certif VAL(,)"
+// })
 
 
 app.listen(port)
