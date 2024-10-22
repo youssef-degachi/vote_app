@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
+var hbs = require('express-hbs');
 
 const port = 3000;
 let app = express();
@@ -8,6 +9,17 @@ let app = express();
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/login/', 'login.html'));
 });
+
+
+//configuration
+
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine('hbs', hbs.express4({
+  partialsDir: __dirname + '/views/partials',
+  layoutsDir: __dirname + '/views/layouts',
+}));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 
 
 
@@ -30,13 +42,11 @@ app.get('/', (req, res) => {
   var sql = 'SELECT * FROM certif'
   connection.query(sql,  function(err, results) {
     console.log(results)
-    res.send(results)
+    res.render("index",{
+      layout: "main",
+    })
   });
 })
-
-// app.post('/',(req,res) => {
-//   var sql = "INSERT INTO certif VAL(,)"
-// })
 
 
 app.listen(port)
