@@ -1,0 +1,22 @@
+{
+  "name": "vote",
+  "version": "1.0.0",
+  "description": "vote app for iset",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "vote",
+    "iset"
+  ],
+  "author": "Youssef Degachi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
